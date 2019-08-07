@@ -1,6 +1,6 @@
 {
   "name": "numavui-wap",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "vue 自定义框架",
   "main": "dist/js/main.js",
   "scripts": {
@@ -55,6 +55,7 @@
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "babel-runtime": "6.26.0",
+    "normalize.css": "8.0.1",
     "vue-router": "3.0.7",
     "vuex": "3.1.1"
   }
