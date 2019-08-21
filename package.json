@@ -1,5 +1,5 @@
 {
-  "name": "numavui-wap",
+  "name": "vue-ide",
   "version": "1.0.9",
   "description": "vue 自定义框架",
   "main": "dist/js/main.js",
