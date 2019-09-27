@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    {{env}}
-    <router-view></router-view>
+    {{ env }}
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
-  data() {
-    return {
-      env: APP_NODE_ENV
-    };
-  }
-}
+    name: "App",
+    data() {
+        return {
+            env: appGlobal.APP_NODE_ENV
+        };
+    }
+};
 </script>
 
 <style scoped>

@@ -72,7 +72,9 @@ module.exports = {
         new webpack.HashedModuleIdsPlugin(),
         new VueLoaderPlugin(),
         // new CleanWebpackPlugin(),
-        new webpack.DefinePlugin(appEnv),
+        new webpack.DefinePlugin({
+            appGlobal: appEnv
+        }),
         new MiniCssExtractPlugin({
             filename: "css/[name].[hash].css",
             chunkFilename: "css/[id].[hash].css"

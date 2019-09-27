@@ -3,20 +3,28 @@ module.exports = {
         "browser": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "extends": [ 'plugin:vue/recommended', 'airbnb-base' ],
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "appGlobal": true
     },
     "parserOptions": {
         "ecmaVersion": 2018,
-        "sourceType": "module"
+        "sourceType": "module",
+        "parser": "babel-eslint",
     },
     "plugins": [
-        "vue"
+        "vue",
+        "html"
     ],
-    "parser": "babel-eslint",
     "rules": {
+        "import/no-unresolved": [0],
+
+        "no-underscore-dangle": 0,
+
+        "import/extensions": 0,
+
         "no-alert": 0,//禁止使用alert confirm prompt
 
         "no-array-constructor": 2,//禁止使用数组构造器
@@ -143,7 +151,7 @@ module.exports = {
 
         "no-octal-escape": 2,//禁止使用八进制转义序列
 
-        "no-param-reassign": 2,//禁止给参数重新赋值
+        "no-param-reassign": 0,//禁止给参数重新赋值
 
         "no-path-concat": 0,//node中不能使用__dirname或__filename做路径拼接
 
@@ -215,7 +223,7 @@ module.exports = {
 
         "no-with": 2,//禁用with
 
-        
+        "prefer-arrow-callback": 0,
 
         "array-bracket-spacing": [2, "never"],//是否允许非空数组里面有多余的空格
 
@@ -229,7 +237,7 @@ module.exports = {
 
         "brace-style": [1, "1tbs"],//大括号风格
 
-        "callback-return": 1,//避免多次调用回调什么的
+        "callback-return": 0,//避免多次调用回调什么的
 
         "camelcase": 2,//强制驼峰法命名
 
@@ -245,7 +253,7 @@ module.exports = {
 
         "consistent-return": 0,//return 后面是否允许省略
 
-        "consistent-this": [2, "that"],//this别名
+        "consistent-this": [2, "self"],//this别名
 
         "constructor-super": 0,//非派生类不能调用super，派生类必须调用super
 
@@ -273,7 +281,7 @@ module.exports = {
 
         "id-length": 0,//变量名长度
 
-        "indent": [2, 4],//缩进风格
+        "indent": ["error", 4],//缩进风格
 
         "init-declarations": 0,//声明时必须赋初值
 
@@ -359,6 +367,9 @@ module.exports = {
 
         "wrap-regex": 0,//正则表达式字面量用小括号包起来
 
-        "yoda": [2, "never"]//禁止尤达条件  
+        "yoda": [2, "never"],//禁止尤达条件  
+
+        "no-async-promise-executor": 0,
+        "vue/order-in-components": 0
     }
 };
