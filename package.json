@@ -1,6 +1,6 @@
 {
   "name": "vue-ide",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "vue 自定义框架",
   "main": "dist/js/main.js",
   "scripts": {
