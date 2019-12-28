@@ -41,6 +41,7 @@ module.exports = {
                             fallback: {
                                 loader:'file-loader',
                                 options: {
+                                    publicPath: "/",
                                     name: 'assets/images/[name].[ext]'
                                 }
                             }
@@ -56,12 +57,19 @@ module.exports = {
                 }
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2)\w*/,
+                test: /\.(eot|ttf|woff|woff2)\w*/,
                 use: [
                     {
                         loader: "url-loader",
                         options: {
-                            limit: 100000
+                            limit: 100000,
+                            fallback: {
+                                loader:'file-loader',
+                                options: {
+                                    publicPath: "/",
+                                    name: 'assets/font/[name].[ext]'
+                                }
+                            }
                         }
                     }
                 ]
