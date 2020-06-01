@@ -6,8 +6,10 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const preRender = require("./preRenderPath.js");
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const smp = new SpeedMeasurePlugin();
 
-module.exports = merge(common, {
+const config = merge(common, {
     mode: "production",
     module: {},
     plugins: [
@@ -37,3 +39,5 @@ module.exports = merge(common, {
         ]
     }
 });
+
+module.exports = smp.wrap(config);
