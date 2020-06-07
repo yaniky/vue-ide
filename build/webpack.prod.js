@@ -4,8 +4,9 @@ const common = require("./webpack.base.js");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-const PrerenderSPAPlugin = require('prerender-spa-plugin')
-const preRender = require("./preRenderPath.js");
+// 预渲染，需要打开，需要yarn add prerender-spa-plugin
+// const PrerenderSPAPlugin = require('prerender-spa-plugin')
+// const preRender = require("./preRenderPath.js");
 
 module.exports = merge(common, {
     mode: "production",
@@ -14,16 +15,16 @@ module.exports = merge(common, {
         new BundleAnalyzerPlugin({
             analyzerPort: 8888
         }),
-        new PrerenderSPAPlugin({
-            staticDir: path.join(__dirname, '../dist'),
-            routes: preRender.waitPage,
-            captureAfterTime: 10000
-        }),
-        new PrerenderSPAPlugin({
-            staticDir: path.join(__dirname, '../dist'),
-            routes: preRender.immediatePage,
-            captureAfterTime: 1
-        })
+        // new PrerenderSPAPlugin({
+        //     staticDir: path.join(__dirname, '../dist'),
+        //     routes: preRender.waitPage,
+        //     captureAfterTime: 10000
+        // }),
+        // new PrerenderSPAPlugin({
+        //     staticDir: path.join(__dirname, '../dist'),
+        //     routes: preRender.immediatePage,
+        //     captureAfterTime: 1
+        // })
     ],
     output: {
         filename: "js/[name].[hash].js",
