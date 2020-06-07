@@ -8,6 +8,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const appEnv = tools.filterAppEnv(env);
+const HappyPack = require("happypack");
 
 module.exports = {
     entry: "./src/index.js",
@@ -52,9 +53,10 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
-                use: {
-                    loader: "babel-loader"
-                }
+                // use: {
+                //     loader: "babel-loader?cacheDirectory=true"
+                // },
+                use: "happypack/loader?id=happyBabel"
             },
             {
                 test: /\.(eot|ttf|woff|woff2)\w*/,
@@ -100,6 +102,12 @@ module.exports = {
             {
                 from: "static/*"
             }
-        ])
+        ]),
+        new HappyPack({
+            id: "happyBabel",
+            loaders: [{
+                loader: "babel-loader?cacheDirectory=true"
+            }]
+        })
     ]
 };
