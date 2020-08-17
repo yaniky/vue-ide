@@ -36,4 +36,4 @@ const config = merge(common, {
     ]
 });
 
-module.exports = smp.wrap(config);
+module.exports = config;
