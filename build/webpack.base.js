@@ -4,7 +4,6 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const env = require("../config");
 const tools = require("../config/tools");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const appEnv = tools.filterAppEnv(env);
@@ -17,20 +16,6 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: "vue-loader"
-            },
-            {
-                test: /\.(sa|sc|c)ss$/,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: "./css/"
-                        }
-                    },
-                    "css-loader",
-                    "postcss-loader",
-                    "sass-loader"
-                ]
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
@@ -90,10 +75,6 @@ module.exports = {
         // new CleanWebpackPlugin(),
         new webpack.DefinePlugin({
             appGlobal: appEnv
-        }),
-        new MiniCssExtractPlugin({
-            filename: "css/[name].[hash].css",
-            chunkFilename: "css/[id].[hash].css"
         }),
         new HtmlWebpackPlugin({
             template: "./public/index.html"

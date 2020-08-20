@@ -28,7 +28,19 @@ const config = merge(common, {
         path: path.resolve(__dirname, "../dist"),
         publicPath: "/"
     },
-    module: {},
+    module: {
+        rules: [
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "postcss-loader",
+                    "sass-loader"
+                ]
+            }
+        ]
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "../public/index.html")
