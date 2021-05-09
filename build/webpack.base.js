@@ -23,6 +23,7 @@ module.exports = {
                     {
                         loader: "url-loader",
                         options: {
+                            esModule: false,
                             limit: 10000,
                             fallback: {
                                 loader:'file-loader',
@@ -70,7 +71,6 @@ module.exports = {
         extensions: [".js", ".vue"]
     },
     plugins: [
-        new webpack.HashedModuleIdsPlugin(),
         new VueLoaderPlugin(),
         // new CleanWebpackPlugin(),
         new webpack.DefinePlugin({
@@ -79,16 +79,25 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./public/index.html"
         }),
-        new CopyWebpackPlugin([
-            {
-                from: "static/*"
-            }
-        ]),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: "static/*"
+                }
+            ]
+        }),
         new HappyPack({
             id: "happyBabel",
             loaders: [{
                 loader: "babel-loader?cacheDirectory=true"
             }]
         })
-    ]
+    ],
+    cache: {
+        type: "filesystem",
+        buildDependencies: {
+            config: [__filename], // 当构建以来的config文件内容发生变化，缓存失效
+        },
+        name: ""
+    }
 };

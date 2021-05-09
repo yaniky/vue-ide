@@ -1,14 +1,12 @@
 const path = require("path");
-const merge = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const common = require("./webpack.base.js");
 const TerserPlugin = require("terser-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 // const PrerenderSPAPlugin = require('prerender-spa-plugin')
 // const preRender = require("./preRenderPath.js");
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
-const smp = new SpeedMeasurePlugin();
 
 const config = merge(common, {
     mode: "production",
@@ -35,8 +33,8 @@ const config = merge(common, {
             analyzerPort: 8888
         }),
         new MiniCssExtractPlugin({
-            filename: "css/[name].[hash].css",
-            chunkFilename: "css/[id].[hash].css"
+            filename: "css/[name].[contenthash].css",
+            chunkFilename: "css/[id].[contenthash].css"
         }),
         // new PrerenderSPAPlugin({
         //     staticDir: path.join(__dirname, '../dist'),
@@ -50,16 +48,17 @@ const config = merge(common, {
         // })
     ],
     output: {
-        filename: "js/[name].[hash].js",
+        filename: "js/[name].[contenthash].js",
         path: path.resolve(__dirname, "../dist"),
         publicPath: "/"
     },
     optimization: {
+        minimize: true,
         minimizer: [
             new TerserPlugin(),
-            new OptimizeCSSAssetsPlugin()
+            new CssMinimizerPlugin()
         ]
     }
 });
 
-module.exports = smp.wrap(config);
+module.exports = config;

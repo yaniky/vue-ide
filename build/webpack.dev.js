@@ -1,9 +1,7 @@
-const merge = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const common = require("./webpack.base.js");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
-const smp = new SpeedMeasurePlugin();
 
 let local;
 
@@ -14,6 +12,7 @@ try {
 }
 
 const config = merge(common, {
+    target: "web",
     mode: "development",
     devtool: "inline-source-map",
     devServer: {
@@ -24,7 +23,7 @@ const config = merge(common, {
         historyApiFallback: true
     },
     output: {
-        filename: "js/[name].[hash].js",
+        filename: "js/[name].[contenthash].js",
         path: path.resolve(__dirname, "../dist"),
         publicPath: "/"
     },
