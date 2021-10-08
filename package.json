@@ -1,6 +1,6 @@
 {
   "name": "vue-ide",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "webpack5 vue 自定义框架",
   "main": "dist/js/main.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "@babel/plugin-transform-runtime": "7.5.0",
     "@babel/preset-env": "7.4.5",
     "@babel/runtime": "7.14.0",
+    "@webpack-cli/serve": "^1.6.0",
     "autoprefixer": "9.6.0",
     "babel-eslint": "10.0.2",
     "babel-loader": "8.0.6",
@@ -48,12 +49,12 @@
     "terser-webpack-plugin": "5.1.1",
     "url-loader": "4.1.1",
     "vue": "2.6.10",
-    "vue-loader": "15.9.6",
+    "vue-loader": "15.9.8",
     "vue-template-compiler": "2.6.10",
-    "webpack": "5.47.0",
+    "webpack": "5.58.0",
     "webpack-bundle-analyzer": "3.4.0",
-    "webpack-cli": "4.7.0",
-    "webpack-dev-server": "3.11.2",
+    "webpack-cli": "4.9.0",
+    "webpack-dev-server": "^4.3.1",
     "webpack-merge": "5.7.3"
   },
   "dependencies": {

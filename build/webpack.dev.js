@@ -16,9 +16,7 @@ const config = merge(common, {
     mode: "development",
     devtool: "inline-source-map",
     devServer: {
-        contentBase: "../dist",
         port: local.port || 3000,
-        disableHostCheck: true,
         host: local.host || "0.0.0.0",
         historyApiFallback: true
     },

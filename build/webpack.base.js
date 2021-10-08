@@ -82,7 +82,8 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: "static/*"
+                    from: "../vr-quality/wasm/*",
+                    to: "static"
                 }
             ]
         }),
