@@ -39,10 +39,10 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
-                // use: {
-                //     loader: "babel-loader?cacheDirectory=true"
-                // },
-                use: "happypack/loader?id=happyBabel"
+                 use: {
+                     loader: "babel-loader?cacheDirectory=true"
+                 },
+                //use: "happypack/loader?id=happyBabel"
             },
             {
                 test: /\.(eot|ttf|woff|woff2)\w*/,
@@ -82,22 +82,22 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: "static/*"
+                    from: "static"
                 }
             ]
-        }),
-        new HappyPack({
-            id: "happyBabel",
-            loaders: [{
-                loader: "babel-loader?cacheDirectory=true"
-            }]
         })
+        //new HappyPack({
+        //    id: "happyBabel",
+        //    loaders: [{
+        //        loader: "babel-loader?cacheDirectory=true"
+        //    }]
+        //})
     ],
-    cache: {
-        type: "filesystem",
-        buildDependencies: {
-            config: [__filename], // 当构建以来的config文件内容发生变化，缓存失效
-        },
-        name: ""
-    }
+    //cache: {
+    //    type: "filesystem",
+    //    buildDependencies: {
+    //        config: [__filename], // 当构建以来的config文件内容发生变化，缓存失效
+    //    },
+    //    name: ""
+    //}
 };
